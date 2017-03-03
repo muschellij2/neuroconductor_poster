@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\begin{document}
+\pagestyle{empty}
+% Define block styles
+
+\tikzstyle{bblock} = [rectangle, draw, text width=8em, text centered, minimum height=2em, rounded corners]
+\tikzstyle{largeblock} = [rectangle, draw, text width=12em, text centered, minimum height=2em, rounded corners]
+\tikzstyle{line} = [draw, text centered , -latex']
+\tikzstyle{wline} = [draw, text centered , -latex', line width=2.5pt]
+\tikzstyle{line node} = [draw, fill=white, font=\tiny ]
+\tikzstyle{block} = [rectangle, draw, text width=5em, text centered, minimum height=4em, rounded corners]    
+\tikzstyle{noblock} = [rectangle, text width=5em, text centered, minimum height=4em, rounded corners]    
+\tikzstyle{nobblock} = [rectangle, text width=8em, text centered, minimum height=2em, rounded corners]
+\tikzstyle{empty} = [rectangle, text width=1em, text centered, minimum height=2em, rounded corners]
+\tikzstyle{large} = [rectangle, text width=10em, text centered, minimum height=2em, rounded corners]
+
+
+\begin{tikzpicture}[node distance = 1.5cm, every node/.style={rectangle,fill=white}, scale=0.75, transform shape]
+
+% Place nodes
+
+\node [empty] (blanktop) {};
+\node [bblock, below = 2cm of blanktop] (raw) {DICOM images};
+\node [large, right = 1cm of raw] (rawspell) {\LARGE Raw Data};
+
+\node [bblock, below = 2.25cm of raw] (dcmnii) {NIfTI Images};
+%\node [bblock, below of=raw] (dcmnii) {NIfTI Images};
+\node [bblock, below of=dcmnii] (inhomo) {Inhomogeneity Correction};
+\node [bblock, below of=inhomo] (bet) {Brain Extraction};
+\node [large, right = 1cm of bet] (betspell) {\LARGE Image \\ Processing};
+
+\node [bblock, below = 1.2cm of bet] (seg) {Image \\ Segmentation};
+\node [bblock, left = 0.5cm of seg] (reg) {Image \\ Registration};
+\node [bblock, right = 0.5cm of seg] (smooth) {Image \\ Smoothing};
+
+\node [empty, below = 0.001cm of seg] (blankunder) {};
+
+%\node [block, below = 3.5cm of seg, right of=seg] (stats) {Statistical Analysis};
+%\node [block, below = 3.5cm of seg, left of=seg] (ml) {Machine Learning};
+%\node [empty, below = 2.5cm of seg] (blankstats) {};
+\node [largeblock, below = 3cm of seg] (mlstats) {Statistical Analysis/ Machine Learning};
+\node [large, right = 1cm of mlstats] (stat_spell) {\LARGE Analysis};
+
+%\node [bblock, below of=seg] (stats) {Statistical Analysis};
+
+
+
+%% Draw edges
+\path [line] (blanktop) -- node {MRI/CT Scanner} (raw);
+\path [line] (raw) -- node {conversion} (dcmnii);
+\path [line] (dcmnii) -- (inhomo);
+\path [line] (inhomo) -- (bet);
+\path [line] (bet) -- (reg);
+\path [line] (bet) -- (seg);
+\path [line] (bet) -- (smooth);
+
+
+%\draw [line width=1pt] (seg) -- (blankstats);
+\path [wline] (blankunder) -- (mlstats);
+
+%\path [line] (seg) -- (stats);
+%\path [line] (seg) -- (ml);
+%
+%\path [line] (reg) -- (stats);
+%\path [line] (reg) -- (ml);
+%
+%\path [line] (smooth) -- (stats);
+%\path [line] (smooth) -- (ml);
+
+\end{tikzpicture}
+
+\end{document}
