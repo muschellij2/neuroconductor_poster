@@ -22,10 +22,9 @@
     eprint=false,
     sorting=none
 ]{biblatex}
-%{\tiny
+{\tiny
 \bibliography{neuroconductor_poster.bib} % your bib file!!
-
-%}
+}
 \renewcommand*{\bibfont}{\scriptsize}
 % \newcommand{\stubber}[1]{../../results/161-413_20110710_1619_CT_2_HEAD_Head#1.png}
 
@@ -54,6 +53,7 @@
 \usepackage{multirow}
 
 \usepackage{subfig}
+\renewcommand{\thesubfigure}{\Alph{subfigure}}
 % 
 % \usepackage{tikz}
 % \usetikzlibrary{shapes,arrows}
@@ -99,10 +99,9 @@ Biostatistics\\[0.3ex]
 \begin{document}
 
 \vspace{-4cm}
-\renewcommand{\thesubfigure}{\Alph{subfigure}}
 
 \begin{frame}[fragile]
-\vspace{-11cm}
+\vspace{-2cm}
 
 \begin{table}[!htb]
 
@@ -125,7 +124,7 @@ library(dplyr)
 \begin{minipage}{0.21\linewidth}
 \section{What is Neuroconductor?}
 
-Neuroconductor is a a centralized repository of R software dedicated to medical image analysis.
+Neuroconductor (\url{https://neuroconductor.org/}) is a a centralized repository of R software dedicated to medical image analysis.
 
 \subsection{Goals of Neuroconductor}
 
@@ -155,13 +154,27 @@ Neuroconductor is a a centralized repository of R software dedicated to medical 
 
 Allow medical imaging to use all R has to offer:
   
+\begin{multicols}{2}
+
 \begin{itemize}
 \item Statistics and Machine Learning
-\item Package versioning, testing, and distribution
+\item Package versioning, testing, and distribution 
 \item Reproducibile reports and analyses (knitr and rmarkdown)
 \item Shiny applications for the web
 \end{itemize}
 
+\vfill
+\columnbreak
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/RMarkdownOutputFormats.png}
+\end{figure}
+{\tiny (Image from \\ 
+http://rmarkdown.rstudio.com/images/RMarkdownOutputFormats.png)
+}
+\end{multicols}
+
+\vspace*{-0.8cm}
 \section{Potential Downsides to Neuroconductor}
 \begin{itemize}
 \item More control over the workflow = more work (e.g.~for statisticians)
@@ -182,10 +195,6 @@ Allow medical imaging to use all R has to offer:
 \section{References}
 \setlength\bibitemsep{0pt}
 \printbibliography[heading=none]\vspace*{-0.5cm}
-\section{Sources of Funding}
-{\scriptsize
-The project described and data used were supported by the NIH grants R01EB012547, T32AG000247, R01NS046309, R01NS060910, R01NS085211, R01NS046309, U01NS080824, U01NS080824 and U01NS062851 and R01MH095836.
-}
 \end{minipage}
 %\begin{minipage}{0.01\linewidth}
 %\end{minipage}
@@ -230,18 +239,21 @@ The project described and data used were supported by the NIH grants R01EB012547
 \end{tabular}
 
 
-\section{Current Neuroconductor Packages}
+\section{Overview of Neuroconductor Packages}
 \begin{tabular}{cc}
-oro.nifti & read/write NIfTI Images \\
-RNifti & read/write NIfTI Images \\
-dcm2niir & convert from DICOM to NIfTI (using dcm2niix binary) \\
-divest & convert from DICOM to NIfTI (using Rcpp) \citep{rcpp} \\
-fslr & FSL port - preprocessing/registration/image operations \\
-freesurfer & Freesurfer port - image registration/segmentation \\
-ANTsR & implements ANTs in Rcpp - preprocessing/registration/image operations \\
-kirby21 &  \citep{kirby} \\ 
-EveTemplate  \\
+oro.nifti, RNifti & read/write NIfTI Images \citep{oro.nifti} \\
+dcm2niir & convert from DICOM to NIfTI (using dcm2niix binary (dcm2niir) \citep{li2016dicom} or Rcpp \citep{rcpp} (divest)) \\
+fslr & FSL port - preprocessing/registration/image operations \citep{fsl,fslr} \\
+freesurfer & Freesurfer port - image registration/segmentation \citep{freesurfer} \\
+spm12r & Wrapper Functions for SPM (Statistical Parametric Mapping) Version 12 \citep{spm} \\
+ANTsR & implements ANTs in Rcpp - preprocessing/registration/image operations \citep{antsr} \\ 
+WhiteStripe & Implementation of WhiteStripe, a statistical normalization technique for MRI data \citep{whitestripe} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Data Packages} \\ \hline
+kirby21 & Scan-rescan data for 42 subjects with structural and functional MRI and diffusion data \citep{kirby} \\ 
+EveTemplate, MNITemplate & Templates for population-level analyses \citep{eve, fonov2011unbiased, fonov2009unbiased}   \\
 malf.templates & Templates \citep{bennett2012miccai} for Multi-Atlas Label Fusion (MALF) and Skull Stripping \\
+hcp & Download data from the Human Connectome Project	\citep{hcp}
 \end{tabular}
 
 
@@ -291,12 +303,15 @@ malf.templates & Templates \citep{bennett2012miccai} for Multi-Atlas Label Fusio
 \end{tabular}
 
 
-\section{Conclusions}
-\vspace*{-0.5cm}
+% \section{Conclusions}
+% \vspace*{-0.5cm}
 
 
 
-
+\section{Sources of Funding}
+{\scriptsize
+The project described and data used were supported by the NIH grants R01EB012547, T32AG000247, R01NS046309, R01NS060910, R01NS085211, R01NS046309, U01NS080824, U01NS080824 and U01NS062851 and R01MH095836.
+}
 
 
 
