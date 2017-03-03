@@ -174,19 +174,24 @@ http://rmarkdown.rstudio.com/images/RMarkdownOutputFormats.png)
 }
 \end{multicols}
 
-\vspace*{-0.8cm}
-\section{Potential Downsides to Neuroconductor}
-\begin{itemize}
-\item More control over the workflow = more work (e.g.~for statisticians)
-\item Users need external software (versions/installation)
-\item No control over external software
-  \begin{itemize}
-    \item if maintainer changes something, not much recourse
-  \end{itemize}
-\item Need the content (buy-in from the imaging/R communities)
-\end{itemize}
-
-
+\section{Current Neuroconductor Capabilities}
+\begin{table}[h]
+\centering
+\begin{tabular}{m{0.4\linewidth}>{\centering \arraybackslash}m{0.6\linewidth}}
+Capabilities & Packages \\ \hline
+DICOM Images & oro.dicom, dcm2niir, divest, ANTsR \\
+NIfTI Images & oro.nifti, RNifti, ANTsR \\
+Image Registration & spm12r, fslr, ANTsR, freesurfer \\
+Inhomogeneity Correction & spm12r, fslr, ANTsR \\
+Brain Extraction & spm12r, fslr, ANTsR, extrantsr \\
+Structure Segmentation & spm12r, fslr, ANTsR, extrantsr, freesurfer \\
+Intensity Normalization & WhiteStripe, neurobase, ANTsR \\
+3D Smoothing & ANTsR, spm12r, fslr \\
+Temporal Filtering & spm12r, fslr, ANTsR  \\
+Slice-timing correction & spm12r, fslr \\
+DTI models & rcamino, oro.dti, fslr \\
+\end{tabular}
+\end{table}
 
 \begin{center}
 % \includegraphics[width=0.8\linewidth]{MS_Imaging_Pipeline_Flowchart.pdf}
@@ -238,26 +243,43 @@ http://rmarkdown.rstudio.com/images/RMarkdownOutputFormats.png)
 & \includegraphics[clip, width=5cm, keepaspectratio]{figures/spm12.png} & SPM 12 - statistical parametric mapping, requires MATLAB (Mathworks, Natick, Massachusetts, USA) - analysis tools for PET/SPECT/fMRI
 \end{tabular}
 
-
-\section{Overview of Neuroconductor Packages}
-\begin{tabular}{cc}
-oro.nifti, RNifti & read/write NIfTI Images \citep{oro.nifti} \\
-dcm2niir & convert from DICOM to NIfTI (using dcm2niix binary (dcm2niir) \citep{li2016dicom} or Rcpp \citep{rcpp} (divest)) \\
-fslr & FSL port - preprocessing/registration/image operations \citep{fsl,fslr} \\
-freesurfer & Freesurfer port - image registration/segmentation \citep{freesurfer} \\
-spm12r & Wrapper Functions for SPM (Statistical Parametric Mapping) Version 12 \citep{spm} \\
-ANTsR & implements ANTs in Rcpp - preprocessing/registration/image operations \citep{antsr} \\ 
-WhiteStripe & Implementation of WhiteStripe, a statistical normalization technique for MRI data \citep{whitestripe} \\
-\multicolumn{2}{c}{} \\
-\multicolumn{2}{c}{Data Packages} \\ \hline
-kirby21 & Scan-rescan data for 42 subjects with structural and functional MRI and diffusion data \citep{kirby} \\ 
+\section{Data Packages}
+\begin{table}[h]
+\centering
+\begin{tabular}{m{0.25\linewidth}>{\centering \arraybackslash}m{0.75\linewidth}}
+Package & Description \\ \hline
+kirby21 & Scan-rescan data for 42 subjects with structural and functional MRI and diffusion data \citep{kirby} \\
 EveTemplate, MNITemplate & Templates for population-level analyses \citep{eve, fonov2011unbiased, fonov2009unbiased}   \\
 malf.templates & Templates \citep{bennett2012miccai} for Multi-Atlas Label Fusion (MALF) and Skull Stripping \\
-hcp & Download data from the Human Connectome Project	\citep{hcp}
+hcp &  Download data from the Human Connectome Project	\citep{hcp}
 \end{tabular}
+\end{table}
+
+
+\section{Sources of Funding}
+{\scriptsize
+The project described and data used were supported by the NIH grants R01EB012547, T32AG000247, R01NS046309, R01NS060910, R01NS085211, R01NS046309, U01NS080824, U01NS080824 and U01NS062851 and R01MH095836.
+}
 
 
 
+% \section{Overview of Neuroconductor Packages}
+
+% \begin{tabular}{cc}
+% oro.nifti, RNifti & read/write NIfTI Images \citep{oro.nifti} \\
+% dcm2niir & convert from DICOM to NIfTI (using dcm2niix binary (dcm2niir) \citep{li2016dicom} or Rcpp \citep{rcpp} (divest)) \\
+% fslr & FSL port - preprocessing/registration/image operations \citep{fsl,fslr} \\
+% freesurfer & Freesurfer port - image registration/segmentation \citep{freesurfer} \\
+% spm12r & Wrapper Functions for SPM (Statistical Parametric Mapping) Version 12 \citep{spm} \\
+% ANTsR & implements ANTs in Rcpp - preprocessing/registration/image operations \citep{antsr} \\ 
+% WhiteStripe & Implementation of WhiteStripe, a statistical normalization technique for MRI data \citep{whitestripe} \\
+% \multicolumn{2}{c}{} \\
+% \multicolumn{2}{c}{Data Packages} \\ \hline
+% kirby21 & Scan-rescan data for 42 subjects with structural and functional MRI and diffusion data \citep{kirby} \\ 
+% EveTemplate, MNITemplate & Templates for population-level analyses \citep{eve, fonov2011unbiased, fonov2009unbiased}   \\
+% malf.templates & Templates \citep{bennett2012miccai} for Multi-Atlas Label Fusion (MALF) and Skull Stripping \\
+% hcp & Download data from the Human Connectome Project	\citep{hcp}
+% \end{tabular}
 
 \vspace*{-0.5cm}
 
@@ -306,13 +328,17 @@ hcp & Download data from the Human Connectome Project	\citep{hcp}
 % \section{Conclusions}
 % \vspace*{-0.5cm}
 
-
-
-\section{Sources of Funding}
-{\scriptsize
-The project described and data used were supported by the NIH grants R01EB012547, T32AG000247, R01NS046309, R01NS060910, R01NS085211, R01NS046309, U01NS080824, U01NS080824 and U01NS062851 and R01MH095836.
-}
-
+\vspace*{-0.8cm}
+\section{Potential Downsides to Neuroconductor}
+\begin{itemize}
+\item More control over the workflow = more work (e.g.~for statisticians)
+\item Users need external software (versions/installation)
+\item No control over external software
+  \begin{itemize}
+    \item if maintainer changes something, not much recourse
+  \end{itemize}
+\item Need the content (buy-in from the imaging/R communities)
+\end{itemize}
 
 
 \end{minipage}
