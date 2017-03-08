@@ -123,7 +123,8 @@
 \title
 %[Super Conference, 1 - 10 July 2013, New York, USA] % Conference
 { % Poster title
-\fontsize{4cm}{6cm}\selectfont Neuroconductor: An R Platform for Medical Imaging Analysis
+\fontsize{4cm}{6cm}\selectfont Neuroconductor: An R Platform for Medical Imaging Analysis \\
+\url{https://neuroconductor.org/}
 }
  
 
@@ -152,7 +153,7 @@ Biostatistics\\[0.3ex]
 \vspace{-4cm}
 
 \begin{frame}[fragile]
-\vspace{-2cm}
+% \vspace{-2cm}
 
 \begin{table}[!htb]
 
@@ -214,13 +215,18 @@ Allow medical imaging to use all R has to offer:
 \includegraphics[width=\linewidth]{figures/RMarkdownOutputFormats.png}
 \end{figure}
 {\tiny (Image from \\ 
-http://rmarkdown.rstudio.com/images/RMarkdownOutputFormats.png)
+\begin{sloppypar}
+\url{http://rmarkdown.rstudio.com/images/RMarkdownOutputFormats.png})
+\end{sloppypar}
 }
 \end{multicols}
 
+\vspace*{-0.4cm}
 \section{Current Neuroconductor Capabilities}
-\begin{table}[h]
-\centering
+\vspace*{-0.4cm}
+% \begin{table}[h]
+% \centering
+\begin{center}
 \begin{tabular}{m{0.4\linewidth}|>{\centering \arraybackslash}m{0.6\linewidth}}
 Capabilities & Packages \\ \hline
 DICOM Images & oro.dicom, dcm2niir, divest, ANTsR \\
@@ -235,12 +241,13 @@ Temporal Filtering & spm12r, fslr, ANTsR  \\
 Slice-timing correction & spm12r, fslr \\
 DTI models & rcamino, oro.dti, fslr \\
 \end{tabular}
-\end{table}
+% \end{table}
+\end{center}
 
 \begin{center}
 % \includegraphics[width=0.8\linewidth]{MS_Imaging_Pipeline_Flowchart.pdf}
 \end{center}
-\vspace*{-0.8cm}
+\vspace*{-0.9cm}
 \section{References}
 \setlength\bibitemsep{0pt}
 \printbibliography[heading=none]\vspace*{-0.5cm}
@@ -288,8 +295,9 @@ DTI models & rcamino, oro.dti, fslr \\
 \end{tabular}
 
 \section{Data Packages}
-\begin{table}[h]
-\centering
+\begin{center}
+% \begin{table}[h]
+% \centering
 \begin{tabular}{>{\centering }m{0.21\linewidth}m{0.79\linewidth}}
 Package & \multicolumn{1}{c}{Description} \\ \hline
 kirby21 & Scan-rescan data for 42 subjects with structural and functional MRI and diffusion data \citep{kirby} \\
@@ -297,7 +305,8 @@ EveTemplate, MNITemplate & Templates for population-level analyses \citep{eve, f
 malf.templates & Templates \citep{bennett2012miccai} for Multi-Atlas Label Fusion (MALF) and Skull Stripping \\
 hcp &  Download data from the Human Connectome Project	\citep{hcp}
 \end{tabular}
-\end{table}
+% \end{table}
+\end{center}
 
 
 
@@ -353,7 +362,7 @@ hcp &  Download data from the Human Connectome Project	\citep{hcp}
 % \includegraphics[clip, width=4cm, keepaspectratio]{figures/travis_logo.png} & Travis  &
 % \includegraphics[clip, width=3.5cm, keepaspectratio]{figures/appveyor-logo-256.png} & AppVeyor \\
 % \end{tabular}
-
+\begin{center}
 \begin{tabular}{m{0.3\linewidth}m{0.5\linewidth}}
 \includegraphics[clip, scale=0.14, keepaspectratio]{figures/github-logo.png} 
 & GitHub - a online hosting service of git repositories.  All Neuroconductor packages are hosted on GitHub.  \\ \hline
@@ -362,6 +371,7 @@ hcp &  Download data from the Human Connectome Project	\citep{hcp}
 \includegraphics[clip, scale=0.5, keepaspectratio]{figures/travis_logo.png} & Travis CI (continuous integration) - an online service of Linux/Mac OSX virtual machines that build and check packages  \\ \hline
 \includegraphics[clip, scale=0.5, keepaspectratio]{figures/appveyor-logo-256.png} & AppVeyor - a similar CI service that builds and checks packages on Windows 
 \end{tabular}
+\end{center}
 
 
 % \section{Conclusions}
@@ -382,7 +392,8 @@ hcp &  Download data from the Human Connectome Project	\citep{hcp}
 
 \section{Sources of Funding}
 {\scriptsize
-The project described and data used were supported by the NIH grants R01EB012547, T32AG000247, R01NS046309, R01NS060910, R01NS085211, R01NS046309, U01NS080824, U01NS080824 and U01NS062851 and R01MH095836.
+The project described and data used were supported by the NIH grants
+R01MH095836, R01NS060910, R01EB012547, P41EB015909,  R01NS085211.
 }
 
 
